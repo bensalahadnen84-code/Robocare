@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IoT Live Telemetry | Robocare</title>
-    <meta name="description" content="Real-time IoT farm live telemetry: soil moisture, temperature and humidity sensor nodes.">
+    <title>Télémétrie IoT en direct | Robocare</title>
+    <meta name="description" content="Télémétrie IoT de la ferme en temps réel : nœuds capteurs d'humidité du sol, de température et d'humidité de l'air.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -405,11 +405,11 @@
                 <span class="brand-title">ROBO<span>CARE</span></span>
             </a>
 
-            <div class="sidebar-section-label">IoT Telemetry</div>
+            <div class="sidebar-section-label">Télémétrie IoT</div>
             <nav class="sidebar-nav">
                 <div class="nav-item active">
                     <i class="fas fa-tower-cell"></i>
-                    <span>Live Telemetry</span>
+                    <span>Télémétrie en direct</span>
                 </div>
             </nav>
 
@@ -419,19 +419,19 @@
         <main class="app-main">
             <header class="main-header">
                 <div class="page-title">
-                    <h1><i class="fas fa-satellite-dish" style="color:var(--accent-cyan)"></i> Live Telemetry</h1>
-                    <p>Continuous multi-zone sensor telemetry stream</p>
+                    <h1><i class="fas fa-satellite-dish" style="color:var(--accent-cyan)"></i> Télémétrie en direct</h1>
+                    <p>Flux continu de télémétrie des capteurs multi-zones</p>
                 </div>
                 <div class="header-actions">
-                    <div class="live-pulse-badge"><div class="pulse-dot"></div> LIVE STREAMING</div>
-                    <button class="btn btn-secondary btn-icon" onclick="toggleTheme()" title="Toggle Light/Dark Theme">
+                    <div class="live-pulse-badge"><div class="pulse-dot"></div> EN DIRECT</div>
+                    <button class="btn btn-secondary btn-icon" onclick="toggleTheme()" title="Basculer thème clair/sombre">
                         <i class="fas fa-moon" id="themeIcon"></i>
                     </button>
                     <button class="btn btn-secondary" onclick="exportSensorCSV()">
-                        <i class="fas fa-download"></i> Export Data
+                        <i class="fas fa-download"></i> Exporter les données
                     </button>
                     <button class="btn btn-cyan" onclick="openAddNodeModal()">
-                        <i class="fas fa-plus"></i> Connect Node
+                        <i class="fas fa-plus"></i> Connecter un nœud
                     </button>
                 </div>
             </header>
@@ -440,41 +440,41 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-label">Avg Soil Moisture</span>
+                        <span class="stat-label">Humidité du sol moy.</span>
                         <div class="stat-icon icon-cyan"><i class="fas fa-droplet"></i></div>
                     </div>
                     <div class="stat-value" id="valAvgMoisture">42%</div>
                     <div class="gauge-bar-bg"><div class="gauge-bar-fill" id="barAvgMoisture" style="width:42%"></div></div>
-                    <div class="stat-sub" style="color:var(--accent-cyan)"><i class="fas fa-check-circle"></i> Optimal (35% - 60%)</div>
+                    <div class="stat-sub" style="color:var(--accent-cyan)"><i class="fas fa-check-circle"></i> Optimale (35 % - 60 %)</div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-label">Avg Temperature</span>
+                        <span class="stat-label">Température moyenne</span>
                         <div class="stat-icon icon-amber"><i class="fas fa-temperature-half"></i></div>
                     </div>
                     <div class="stat-value" id="valAvgTemp">28.4 °C</div>
                     <div class="gauge-bar-bg"><div class="gauge-bar-fill" id="barAvgTemp" style="width:58%; background:var(--accent-amber);"></div></div>
-                    <div class="stat-sub" style="color:var(--accent-amber)"><i class="fas fa-sun"></i> Normal Day Range</div>
+                    <div class="stat-sub" style="color:var(--accent-amber)"><i class="fas fa-sun"></i> Plage normale de la journée</div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-label">Avg Humidity</span>
+                        <span class="stat-label">Humidité moyenne</span>
                         <div class="stat-icon icon-blue"><i class="fas fa-wind"></i></div>
                     </div>
                     <div class="stat-value" id="valAvgHumidity">65%</div>
                     <div class="gauge-bar-bg"><div class="gauge-bar-fill" id="barAvgHumidity" style="width:65%; background:var(--accent-blue);"></div></div>
-                    <div class="stat-sub" style="color:var(--accent-blue)"><i class="fas fa-cloud"></i> Good Crop Humidity</div>
+                    <div class="stat-sub" style="color:var(--accent-blue)"><i class="fas fa-cloud"></i> Bonne humidité pour les cultures</div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-label">Active Sensors</span>
+                        <span class="stat-label">Capteurs actifs</span>
                         <div class="stat-icon icon-purple"><i class="fas fa-tower-broadcast"></i></div>
                     </div>
-                    <div class="stat-value" id="valActiveNodes">4 / 4</div>
-                    <div class="stat-sub" style="color:var(--accent-purple)"><i class="fas fa-wifi"></i> All Nodes Online (100%)</div>
+                    <div class="stat-value" id="valActiveNodes">3 / 3</div>
+                    <div class="stat-sub" style="color:var(--accent-purple)"><i class="fas fa-wifi"></i> Tous les nœuds en ligne (100 %)</div>
                 </div>
             </div>
 
@@ -482,8 +482,8 @@
             <section>
                 <div class="panel-card">
                     <div class="panel-header">
-                        <h2 class="panel-title"><i class="fas fa-network-wired"></i> Sensor Node Network</h2>
-                        <span style="font-size:0.82rem; color:var(--text-muted);">Auto-refreshing live data stream every 3s</span>
+                        <h2 class="panel-title"><i class="fas fa-network-wired"></i> Réseau de nœuds capteurs</h2>
+                        <span style="font-size:0.82rem; color:var(--text-muted);">Flux de données actualisé automatiquement toutes les 3 s</span>
                     </div>
                     <div class="sensor-nodes-grid" id="sensorNodesGrid"></div>
                 </div>
@@ -495,39 +495,39 @@
     <div class="modal-overlay" id="nodeModal">
         <div class="modal-card">
             <div class="modal-header">
-                <h3><i class="fas fa-satellite-dish"></i> Connect New IoT Sensor Node</h3>
+                <h3><i class="fas fa-satellite-dish"></i> Connecter un nouveau nœud capteur IoT</h3>
                 <button class="close-modal" onclick="closeModal('nodeModal')">&times;</button>
             </div>
             <form onsubmit="saveNode(event)">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label>Node ID *</label>
-                        <input type="text" id="nId" class="form-control" placeholder="e.g. NODE-05" required>
+                        <label>ID du nœud *</label>
+                        <input type="text" id="nId" class="form-control" placeholder="ex. NODE-05" required>
                     </div>
                     <div class="form-group">
-                        <label>Zone / Location *</label>
-                        <input type="text" id="nLocation" class="form-control" placeholder="e.g. Greenhouse Section C" required>
+                        <label>Zone / Emplacement *</label>
+                        <input type="text" id="nLocation" class="form-control" placeholder="ex. Serre, section C" required>
                     </div>
                     <div class="form-group">
-                        <label>Sensor Type</label>
+                        <label>Type de capteur</label>
                         <select id="nType" class="form-control">
-                            <option value="Soil & Temp Combo">Soil Moisture & Temp Combo</option>
-                            <option value="Soil Moisture Probe">Soil Moisture Probe (Dual Depth)</option>
-                            <option value="Microclimate Station">Microclimate Station</option>
+                            <option value="Soil & Temp Combo">Humidité du sol et température (combiné)</option>
+                            <option value="Soil Moisture Probe">Sonde d'humidité du sol (double profondeur)</option>
+                            <option value="Microclimate Station">Station microclimat</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Protocol</label>
+                        <label>Protocole</label>
                         <select id="nProtocol" class="form-control">
-                            <option value="LoRaWAN">LoRaWAN Long Range</option>
+                            <option value="LoRaWAN">LoRaWAN longue portée</option>
                             <option value="Wi-Fi MQTT">Wi-Fi (MQTT)</option>
-                            <option value="NB-IoT">NB-IoT Cellular</option>
+                            <option value="NB-IoT">NB-IoT cellulaire</option>
                         </select>
                     </div>
                 </div>
                 <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1.5rem;">
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('nodeModal')">Cancel</button>
-                    <button type="submit" class="btn btn-cyan">Connect Node</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('nodeModal')">Annuler</button>
+                    <button type="submit" class="btn btn-cyan">Connecter un nœud</button>
                 </div>
             </form>
         </div>
@@ -537,16 +537,15 @@
 
     <script>
         const DEFAULT_NODES = [
-            { id: "NODE-01", name: "North Field Zone A", moisture10: 42, moisture30: 48, temp: 27.5, humidity: 64, battery: 92, status: "Active", rssi: "-68 dBm" },
-            { id: "NODE-02", name: "Greenhouse B (Paddy)", moisture10: 38, moisture30: 41, temp: 29.8, humidity: 71, battery: 85, status: "Active", rssi: "-72 dBm" },
-            { id: "NODE-03", name: "South Orchard Block", moisture10: 22, moisture30: 29, temp: 34.2, humidity: 45, battery: 78, status: "Warning", rssi: "-81 dBm" },
-            { id: "NODE-04", name: "East Nursery Shed", moisture10: 55, moisture30: 58, temp: 25.1, humidity: 68, battery: 96, status: "Active", rssi: "-64 dBm" }
+            { id: "NODE-01", name: "Champ nord, zone A", moisture10: 42, moisture30: 48, temp: 27.5, humidity: 64, battery: 92, status: "Actif", rssi: "-68 dBm" },
+            { id: "NODE-02", name: "Serre B (riz)", moisture10: 38, moisture30: 41, temp: 29.8, humidity: 71, battery: 85, status: "Actif", rssi: "-72 dBm" },
+            { id: "NODE-03", name: "Verger sud", moisture10: 22, moisture30: 29, temp: 34.2, humidity: 45, battery: 78, status: "Alerte", rssi: "-81 dBm" }
         ];
 
-        let nodes = JSON.parse(localStorage.getItem("agri_iot_nodes")) || DEFAULT_NODES;
+        let nodes = JSON.parse(localStorage.getItem("robocare_iot_nodes_v2")) || DEFAULT_NODES;
 
         function saveState() {
-            localStorage.setItem("agri_iot_nodes", JSON.stringify(nodes));
+            localStorage.setItem("robocare_iot_nodes_v2", JSON.stringify(nodes));
             updateMetrics();
         }
 
@@ -600,22 +599,22 @@
 
                     <div class="node-telemetry-list">
                         <div class="telemetry-row">
-                            <label><i class="fas fa-droplet" style="color:var(--accent-cyan)"></i> Soil Moisture (10cm)</label>
+                            <label><i class="fas fa-droplet" style="color:var(--accent-cyan)"></i> Humidité du sol (10 cm)</label>
                             <strong>${n.moisture10}%</strong>
                         </div>
                         <div class="telemetry-row">
-                            <label><i class="fas fa-temperature-half" style="color:var(--accent-amber)"></i> Temperature</label>
+                            <label><i class="fas fa-temperature-half" style="color:var(--accent-amber)"></i> Température</label>
                             <strong>${n.temp} °C</strong>
                         </div>
                         <div class="telemetry-row">
-                            <label><i class="fas fa-wind" style="color:var(--accent-blue)"></i> Humidity</label>
+                            <label><i class="fas fa-wind" style="color:var(--accent-blue)"></i> Humidité</label>
                             <strong>${n.humidity}%</strong>
                         </div>
                     </div>
 
                     <div class="node-footer">
-                        <span><i class="fas fa-battery-three-quarters"></i> Battery: ${n.battery}%</span>
-                        <span><i class="fas fa-clock"></i> Updated Just Now</span>
+                        <span><i class="fas fa-battery-three-quarters"></i> Batterie : ${n.battery}%</span>
+                        <span><i class="fas fa-clock"></i> Mis à jour à l'instant</span>
                     </div>
                 </div>
             `).join("");
@@ -634,17 +633,17 @@
                 temp: 26.5,
                 humidity: 60,
                 battery: 100,
-                status: "Active",
+                status: "Actif",
                 rssi: "-60 dBm"
             });
             saveState();
             renderNodes();
             closeModal("nodeModal");
-            showToast("New IoT Sensor Node connected successfully!");
+            showToast("Nouveau nœud capteur IoT connecté avec succès !");
         }
 
         function exportSensorCSV() {
-            let csv = "Node ID,Location,Soil_Moisture_10cm,Soil_Moisture_30cm,Temp_C,Humidity_pct,Battery_pct\n";
+            let csv = "ID_Noeud,Emplacement,Humidite_Sol_10cm,Humidite_Sol_30cm,Temp_C,Humidite_pct,Batterie_pct\n";
             nodes.forEach(n => {
                 csv += `"${n.id}","${n.name}","${n.moisture10}","${n.moisture30}","${n.temp}","${n.humidity}","${n.battery}"\n`;
             });
@@ -652,9 +651,9 @@
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = `sensor_telemetry_${new Date().toISOString().split('T')[0]}.csv`;
+            a.download = `telemetrie_capteurs_${new Date().toISOString().split('T')[0]}.csv`;
             a.click();
-            showToast("Exported sensor telemetry to CSV.");
+            showToast("Télémétrie des capteurs exportée en CSV.");
         }
 
         function toggleTheme() {
