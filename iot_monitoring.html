@@ -7,61 +7,50 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--cyan:#06b6d4;--green:#10b981;--blue:#3b82f6;--purple:#8b5cf6;--amber:#f59e0b;--red:#ef4444;--bg:#f8fafc;--card:#fff;--border:rgba(226,232,240,.8);--text:#0f172a;--muted:#64748b;--shadow:0 10px 25px -5px rgba(15,23,42,.08);--r:20px;--r2:12px}
-[data-theme=dark]{--bg:#090d16;--card:#0f172a;--border:rgba(255,255,255,.1);--text:#f8fafc;--muted:#94a3b8;--shadow:0 10px 30px -5px rgba(0,0,0,.5)}
+:root{--cyan:#06b6d4;--green:#10b981;--blue:#3b82f6;--purple:#8b5cf6;--amber:#f59e0b;--red:#ef4444;--border:rgba(226,232,240,.8);--muted:#64748b;--shadow:0 10px 25px -5px rgba(15,23,42,.08)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;transition:background .3s,color .3s}
+body{font-family:'Outfit',sans-serif;background:#f8fafc;color:#0f172a;min-height:100vh;display:flex}
 .sidebar{width:280px;background:#0f172a;color:#fff;padding:1.5rem 1.25rem;position:sticky;top:0;height:100vh;flex-shrink:0}
 .brand{display:block;margin:.5rem .5rem 2rem;font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
 .brand span{color:var(--cyan)}
 .side-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin:0 .5rem .5rem;font-weight:700}
-.nav-item{display:flex;align-items:center;gap:.85rem;padding:.85rem 1rem;border-radius:var(--r2);background:var(--cyan);font-weight:600;box-shadow:0 4px 14px rgba(6,182,212,.35)}
+.nav-item{display:flex;align-items:center;gap:.85rem;padding:.85rem 1rem;border-radius:12px;background:var(--cyan);font-weight:600;box-shadow:0 4px 14px rgba(6,182,212,.35)}
 main{flex:1;padding:2rem 2.5rem;max-width:1500px;overflow-x:hidden}
-header{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
-h1{font-size:1.85rem;display:flex;align-items:center;gap:.75rem}
-header p{color:var(--muted);font-size:.92rem}
-.actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.live{display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.15);color:var(--green);padding:.35rem .75rem;border-radius:999px;font-size:.8rem;font-weight:700}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 8px transparent}0%{box-shadow:0 0 0 0 rgba(16,185,129,.7)}100%{box-shadow:0 0 0 0 transparent}}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.25rem;border-radius:var(--r2);font:600 .9rem inherit;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--text)}
-.btn-cyan{background:var(--cyan);color:#fff;border-color:transparent}
-.btn-icon{width:42px;height:42px;padding:0;border-radius:50%;justify-content:center}
+header{margin-bottom:2rem}
+h1,h2,.stat-head,.sub,.row label{display:flex;align-items:center;gap:.6rem}
+h1{font-size:1.85rem;gap:.75rem}
+header p,.card-head span{color:var(--muted);font-size:.92rem}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;margin-bottom:2rem}
-.card,.stat,.node{background:var(--card);border:1px solid var(--border);border-radius:var(--r)}
-.stat{padding:1.35rem 1.5rem;box-shadow:var(--shadow)}
-.stat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;color:var(--muted);font-size:.85rem;font-weight:500}
-.icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c)}
+.card,.stat,.node{background:#fff;border:1px solid var(--border);border-radius:20px}
+.stat,.card{box-shadow:var(--shadow)}
+.stat{padding:1.35rem 1.5rem}
+.stat-head{justify-content:space-between;margin-bottom:.75rem;color:var(--muted);font-size:.85rem;font-weight:500}
+.icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+.icon,.badge{background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c)}
 .value{font-size:2.1rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .bar{height:8px;background:rgba(148,163,184,.2);border-radius:999px;overflow:hidden;margin-top:.35rem}
 .bar div{height:100%;background:var(--c);border-radius:999px;transition:width .5s}
-.sub{font-size:.78rem;margin-top:.5rem;color:var(--c);display:flex;align-items:center;gap:.3rem}
-.card{padding:1.75rem;box-shadow:var(--shadow)}
+.sub{font-size:.78rem;margin-top:.5rem;color:var(--c);gap:.3rem}
+.card{padding:1.75rem}
 .card-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
-.card-head h2{font-size:1.2rem;display:flex;align-items:center;gap:.6rem}
-.card-head span{font-size:.82rem;color:var(--muted)}
+h2{font-size:1.2rem}
+.card-head span{font-size:.82rem}
 .nodes{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem}
 .node{padding:1.35rem;transition:.25s}
 .node:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--cyan)}
-.node-head{display:flex;align-items:center;justify-content:space-between}
+.node-head,.row,.node-foot{display:flex;justify-content:space-between;align-items:center}
 .node-head small{font-size:.78rem;color:var(--muted)}
-.badge{padding:.3rem .75rem;border-radius:999px;font-size:.75rem;font-weight:700;background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c)}
+.badge{padding:.3rem .75rem;border-radius:999px;font-size:.75rem;font-weight:700}
 .rows{display:flex;flex-direction:column;gap:.65rem;margin:1rem 0;font-size:.88rem}
-.row{display:flex;justify-content:space-between;padding:.45rem .75rem;background:rgba(148,163,184,.08);border-radius:8px}
-.row label{color:var(--muted);font-weight:500;display:flex;align-items:center;gap:.5rem}
-.node-foot{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);padding-top:.75rem;border-top:1px solid var(--border)}
-.modal{position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);z-index:2000;display:none;align-items:center;justify-content:center;padding:1rem}
-.modal.open{display:flex}
-.modal form{background:var(--card);border:1px solid var(--border);width:100%;max-width:580px;border-radius:var(--r);padding:2rem;max-height:90vh;overflow-y:auto}
-.modal-head{display:flex;justify-content:space-between;margin-bottom:1.5rem}
-.modal-head button{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.grid label{display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--muted)}
-.grid input,.grid select{padding:.75rem 1rem;border-radius:var(--r2);border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;outline:none}
-.modal-actions{display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.5rem}
-#toasts{position:fixed;bottom:2rem;right:2rem;z-index:3000;display:flex;flex-direction:column;gap:.75rem}
-.toast{background:#0f172a;color:#fff;padding:.9rem 1.4rem;border-radius:var(--r2);border-left:4px solid var(--cyan);font-size:.9rem;font-weight:500;animation:in .3s}
-@keyframes in{from{transform:translateX(100%)}}
+.row{padding:.35rem .75rem;background:rgba(148,163,184,.08);border-radius:8px}
+.row label{color:var(--muted);font-weight:500;gap:.5rem}
+.field{display:flex;align-items:center;gap:.3rem;font-weight:700}
+.field input{width:84px;padding:.3rem .5rem;border-radius:8px;border:1px solid var(--border);color:inherit;font:inherit;text-align:right;outline:none;transition:.2s}
+.field input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(6,182,212,.2)}
+.field input.invalid{border-color:var(--red)}
+.node-foot{font-size:.78rem;color:var(--muted);padding-top:.75rem;border-top:1px solid var(--border)}
+.node-foot .field{font-weight:600}
+.node-foot input{width:64px;font-size:.78rem}
 @media(max-width:1024px){.sidebar{width:80px;padding:1.25rem .5rem}.brand,.side-label,.nav-item span{display:none}.nav-item{justify-content:center}main{padding:1.5rem}}
 </style>
 </head>
@@ -71,155 +60,99 @@ header p{color:var(--muted);font-size:.92rem}
   <div class="side-label">Télémétrie IoT</div>
   <div class="nav-item"><i class="fas fa-tower-cell"></i><span>Télémétrie en direct</span></div>
 </aside>
- 
 <main>
   <header>
-    <div>
-      <h1><i class="fas fa-satellite-dish" style="color:var(--cyan)"></i> Télémétrie en direct</h1>
-      <p>Flux continu de télémétrie des capteurs multi-zones</p>
-    </div>
-    <div class="actions">
-      <div class="live"><div class="dot"></div> EN DIRECT</div>
-      <button class="btn btn-icon" onclick="toggleTheme()" title="Basculer thème clair/sombre"><i class="fas fa-moon" id="themeIcon"></i></button>
-      <button class="btn" onclick="exportCSV()"><i class="fas fa-download"></i> Exporter les données</button>
-      <button class="btn btn-cyan" onclick="toggleModal(true)"><i class="fas fa-plus"></i> Connecter un nœud</button>
-    </div>
+    <h1><i class="fas fa-satellite-dish" style="color:var(--cyan)"></i> Télémétrie en direct</h1>
+    <p>Flux continu de télémétrie des capteurs multi-zones</p>
   </header>
- 
   <div class="stats" id="stats"></div>
- 
   <section class="card">
     <div class="card-head">
       <h2><i class="fas fa-network-wired"></i> Réseau de nœuds capteurs</h2>
-      <span>Flux de données actualisé automatiquement toutes les 3 s</span>
+      <span>Flux de données actualisé automatiquement toutes les 3 s · valeurs modifiables</span>
     </div>
     <div class="nodes" id="nodes"></div>
   </section>
 </main>
- 
-<div class="modal" id="modal">
-  <form onsubmit="saveNode(event)">
-    <div class="modal-head">
-      <h3><i class="fas fa-satellite-dish"></i> Connecter un nouveau nœud capteur IoT</h3>
-      <button type="button" onclick="toggleModal(false)">&times;</button>
-    </div>
-    <div class="grid">
-      <label>ID du nœud *<input id="nId" placeholder="ex. NODE-05" required></label>
-      <label>Zone / Emplacement *<input id="nLocation" placeholder="ex. Serre, section C" required></label>
-      <label>Type de capteur
-        <select><option>Humidité du sol et température (combiné)</option><option>Sonde d'humidité du sol (double profondeur)</option><option>Station microclimat</option></select>
-      </label>
-      <label>Protocole
-        <select><option>LoRaWAN longue portée</option><option>Wi-Fi (MQTT)</option><option>NB-IoT cellulaire</option></select>
-      </label>
-    </div>
-    <div class="modal-actions">
-      <button type="button" class="btn" onclick="toggleModal(false)">Annuler</button>
-      <button type="submit" class="btn btn-cyan">Connecter un nœud</button>
-    </div>
-  </form>
-</div>
- 
-<div id="toasts"></div>
- 
 <script>
-const KEY = "robocare_iot_nodes_v3";
-const DEFAULTS = [
-  { id: "NODE-01", name: "Champ nord, zone A", moisture: 42, temp: 27.5, humidity: 64, battery: 92, status: "Actif", rssi: "-68 dBm" },
-  { id: "NODE-02", name: "Serre B (riz)", moisture: 38, temp: 29.8, humidity: 71, battery: 85, status: "Actif", rssi: "-72 dBm" },
-  { id: "NODE-03", name: "Verger sud", moisture: 22, temp: 34.2, humidity: 45, battery: 78, status: "Alerte", rssi: "-81 dBm" }
+const L = { moisture: [0, 100], temp: [-20, 60], humidity: [0, 100], battery: [0, 100] };
+const ROWS = [["moisture", "droplet", "cyan", "Humidité du sol (10 cm)", "%"], ["temp", "temperature-half", "amber", "Température", "°C"], ["humidity", "wind", "blue", "Humidité", "%"]];
+const nodes = [
+  { id: "NODE-01", name: "Passerelle 1", moisture: 42, temp: 27.5, humidity: 64, battery: 92, rssi: -68 },
+  { id: "NODE-02", name: "Passerelle 2", moisture: 38, temp: 29.8, humidity: 71, battery: 85, rssi: -72 },
+  { id: "NODE-03", name: "Passerelle 3", moisture: 22, temp: 34.2, humidity: 45, battery: 78, rssi: -81 }
 ];
-let nodes = JSON.parse(localStorage.getItem(KEY)) || DEFAULTS;
- 
 const $ = id => document.getElementById(id);
 const avg = (k, d = 0) => +(nodes.reduce((a, n) => a + n[k], 0) / nodes.length).toFixed(d);
-const clamp = (v, min, max) => Math.round(Math.min(max, Math.max(min, v)) * 10) / 10;
+const clamp = (v, a, b) => Math.round(Math.min(b, Math.max(a, v)) * 10) / 10;
+const field = (i, k, u, s = .1) => `<span class="field"><input type="number" step="${s}" min="${L[k][0]}" max="${L[k][1]}" data-i="${i}" data-k="${k}" value="${nodes[i][k]}">${u}</span>`;
  
 function renderStats() {
-  const m = avg("moisture"), t = avg("temp", 1), h = avg("humidity");
-  const cards = [
+  const m = avg("moisture"), t = avg("temp", 1), h = avg("humidity"), n = nodes.length;
+  $("stats").innerHTML = [
     ["Humidité du sol moy.", "droplet", "cyan", `${m}%`, m, "check-circle", "Optimale (35 % - 60 %)"],
-    ["Température moyenne", "temperature-half", "amber", `${t} °C`, t / 45 * 100, "sun", "Plage normale de la journée"],
+    ["Température moyenne", "temperature-half", "amber", `${t} °C`, t / .45, "sun", "Plage normale de la journée"],
     ["Humidité moyenne", "wind", "blue", `${h}%`, h, "cloud", "Bonne humidité pour les cultures"],
-    ["Capteurs actifs", "tower-broadcast", "purple", `${nodes.length} / ${nodes.length}`, null, "wifi", "Tous les nœuds en ligne (100 %)"]
-  ];
-  $("stats").innerHTML = cards.map(([label, icon, c, val, pct, subIcon, sub]) => `
+    ["Capteurs actifs", "tower-broadcast", "purple", `${n} / ${n}`, null, "wifi", "Tous les nœuds en ligne (100 %)"]
+  ].map(([label, icon, c, val, pct, si, sub]) => `
     <div class="stat" style="--c:var(--${c})">
       <div class="stat-head">${label}<div class="icon"><i class="fas fa-${icon}"></i></div></div>
       <div class="value">${val}</div>
-      ${pct === null ? "" : `<div class="bar"><div style="width:${Math.min(100, pct)}%"></div></div>`}
-      <div class="sub"><i class="fas fa-${subIcon}"></i> ${sub}</div>
+      ${pct === null ? "" : `<div class="bar"><div style="width:${Math.max(0, Math.min(100, pct))}%"></div></div>`}
+      <div class="sub"><i class="fas fa-${si}"></i> ${sub}</div>
     </div>`).join("");
 }
  
-function renderNodes() {
-  $("nodes").innerHTML = nodes.map(n => `
-    <div class="node">
-      <div class="node-head">
-        <div><h3>${n.name}</h3><small>${n.id} • ${n.rssi}</small></div>
-        <span class="badge" style="--c:var(--${n.moisture < 25 ? "red" : "green"})">${n.status}</span>
-      </div>
-      <div class="rows">
-        <div class="row"><label><i class="fas fa-droplet" style="color:var(--cyan)"></i> Humidité du sol (10 cm)</label><strong>${n.moisture}%</strong></div>
-        <div class="row"><label><i class="fas fa-temperature-half" style="color:var(--amber)"></i> Température</label><strong>${n.temp} °C</strong></div>
-        <div class="row"><label><i class="fas fa-wind" style="color:var(--blue)"></i> Humidité</label><strong>${n.humidity}%</strong></div>
-      </div>
-      <div class="node-foot">
-        <span><i class="fas fa-battery-three-quarters"></i> Batterie : ${n.battery}%</span>
-        <span><i class="fas fa-clock"></i> Mis à jour à l'instant</span>
-      </div>
-    </div>`).join("");
-}
+$("nodes").innerHTML = nodes.map((n, i) => `
+  <div class="node">
+    <div class="node-head">
+      <div><h3>${n.name}</h3><small>${n.id} • ${n.rssi} dBm</small></div>
+      <span class="badge"></span>
+    </div>
+    <div class="rows">${ROWS.map(([k, ic, c, label, u]) =>
+      `<div class="row"><label><i class="fas fa-${ic}" style="color:var(--${c})"></i> ${label}</label>${field(i, k, u)}</div>`).join("")}
+    </div>
+    <div class="node-foot">
+      <span class="field"><i class="fas fa-battery-three-quarters"></i> Batterie : ${field(i, "battery", "%", 1)}</span>
+      <span><i class="fas fa-clock"></i> Mis à jour à l'instant</span>
+    </div>
+  </div>`).join("");
  
+// Met à jour l'affichage sans toucher au champ en cours de saisie
 function refresh() {
-  localStorage.setItem(KEY, JSON.stringify(nodes));
   renderStats();
-  renderNodes();
+  [...$("nodes").children].forEach((card, i) => {
+    card.querySelectorAll("input").forEach(x => x !== document.activeElement && (x.value = nodes[i][x.dataset.k]));
+    const alert = nodes[i].moisture < 25, b = card.querySelector(".badge");
+    b.textContent = alert ? "Alerte" : "Actif";
+    b.style.setProperty("--c", `var(--${alert ? "red" : "green"})`);
+  });
 }
  
-function pulse() {
-  nodes.forEach(n => {
+$("nodes").addEventListener("input", ({ target: x }) => {
+  const { i, k } = x.dataset, v = parseFloat(x.value);
+  const ok = v >= L[k][0] && v <= L[k][1];
+  x.classList.toggle("invalid", !ok);
+  if (ok) { nodes[i][k] = v; refresh(); }
+});
+ 
+// En quittant le champ : restaure la dernière valeur valide si la saisie est vide ou hors bornes
+$("nodes").addEventListener("change", ({ target: x }) => {
+  x.classList.remove("invalid");
+  x.value = nodes[x.dataset.i][x.dataset.k];
+});
+ 
+refresh();
+setInterval(() => {
+  [...$("nodes").children].forEach((card, i) => {
+    if (card.contains(document.activeElement)) return;
+    const n = nodes[i];
     n.moisture = clamp(n.moisture + (Math.random() - .48) * 1.2, 15, 95);
     n.temp = clamp(n.temp + (Math.random() - .48) * .4, 10, 48);
     n.humidity = clamp(n.humidity + (Math.random() - .48) * .8, 20, 95);
   });
   refresh();
-}
- 
-function toggleModal(open) { $("modal").classList.toggle("open", open); }
- 
-function saveNode(e) {
-  e.preventDefault();
-  nodes.unshift({ id: $("nId").value.trim(), name: $("nLocation").value.trim(), moisture: 45, temp: 26.5, humidity: 60, battery: 100, status: "Actif", rssi: "-60 dBm" });
-  refresh();
-  toggleModal(false);
-  toast("Nouveau nœud capteur IoT connecté avec succès !");
-}
- 
-function exportCSV() {
-  const rows = nodes.map(n => [n.id, n.name, n.moisture, n.temp, n.humidity, n.battery].map(v => `"${v}"`).join(","));
-  const csv = ["ID_Noeud,Emplacement,Humidite_Sol_10cm,Temp_C,Humidite_pct,Batterie_pct", ...rows].join("\n");
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
-  a.download = `telemetrie_capteurs_${new Date().toISOString().slice(0, 10)}.csv`;
-  a.click();
-  toast("Télémétrie des capteurs exportée en CSV.");
-}
- 
-function toggleTheme() {
-  const dark = document.body.dataset.theme !== "dark";
-  document.body.dataset.theme = dark ? "dark" : "light";
-  $("themeIcon").className = dark ? "fas fa-sun" : "fas fa-moon";
-}
- 
-function toast(msg) {
-  const el = Object.assign(document.createElement("div"), { className: "toast", textContent: msg });
-  $("toasts").append(el);
-  setTimeout(() => el.remove(), 3500);
-}
- 
-refresh();
-setInterval(pulse, 3500);
+}, 3500);
 </script>
 </body>
 </html>
