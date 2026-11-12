@@ -2,224 +2,115 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Télémétrie IoT en direct | Robocare</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--cyan:#06b6d4;--green:#10b981;--blue:#3b82f6;--purple:#8b5cf6;--amber:#f59e0b;--red:#ef4444;--bg:#f8fafc;--card:#fff;--border:rgba(226,232,240,.8);--text:#0f172a;--muted:#64748b;--shadow:0 10px 25px -5px rgba(15,23,42,.08);--r:20px;--r2:12px}
-[data-theme=dark]{--bg:#090d16;--card:#0f172a;--border:rgba(255,255,255,.1);--text:#f8fafc;--muted:#94a3b8;--shadow:0 10px 30px -5px rgba(0,0,0,.5)}
+:root{--cyan:#06b6d4;--blue:#3b82f6;--amber:#f59e0b;--red:#ef4444;--border:#e2e8f0;--muted:#64748b}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;transition:background .3s,color .3s}
-.sidebar{width:280px;background:#0f172a;color:#fff;padding:1.5rem 1.25rem;position:sticky;top:0;height:100vh;flex-shrink:0}
-.brand{display:block;margin:.5rem .5rem 2rem;font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
-.brand span{color:var(--cyan)}
-.side-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin:0 .5rem .5rem;font-weight:700}
-.nav-item{display:flex;align-items:center;gap:.85rem;padding:.85rem 1rem;border-radius:var(--r2);background:var(--cyan);font-weight:600;box-shadow:0 4px 14px rgba(6,182,212,.35)}
-main{flex:1;padding:2rem 2.5rem;max-width:1500px;overflow-x:hidden}
-header{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
-h1{font-size:1.85rem;display:flex;align-items:center;gap:.75rem}
-header p{color:var(--muted);font-size:.92rem}
-.actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.live{display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.15);color:var(--green);padding:.35rem .75rem;border-radius:999px;font-size:.8rem;font-weight:700}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 8px transparent}0%{box-shadow:0 0 0 0 rgba(16,185,129,.7)}100%{box-shadow:0 0 0 0 transparent}}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.25rem;border-radius:var(--r2);font:600 .9rem inherit;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--text)}
-.btn-cyan{background:var(--cyan);color:#fff;border-color:transparent}
-.btn-icon{width:42px;height:42px;padding:0;border-radius:50%;justify-content:center}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;margin-bottom:2rem}
-.card,.stat,.node{background:var(--card);border:1px solid var(--border);border-radius:var(--r)}
-.stat{padding:1.35rem 1.5rem;box-shadow:var(--shadow)}
-.stat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;color:var(--muted);font-size:.85rem;font-weight:500}
-.icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c)}
-.value{font-size:2.1rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
-.bar{height:8px;background:rgba(148,163,184,.2);border-radius:999px;overflow:hidden;margin-top:.35rem}
-.bar div{height:100%;background:var(--c);border-radius:999px;transition:width .5s}
-.sub{font-size:.78rem;margin-top:.5rem;color:var(--c);display:flex;align-items:center;gap:.3rem}
-.card{padding:1.75rem;box-shadow:var(--shadow)}
-.card-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
-.card-head h2{font-size:1.2rem;display:flex;align-items:center;gap:.6rem}
-.card-head span{font-size:.82rem;color:var(--muted)}
-.nodes{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem}
+body{font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a;min-height:100vh;display:flex;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+svg{width:1em;height:1em;flex-shrink:0}
+aside{width:260px;background:#0f172a;color:#fff;padding:1.5rem 1.25rem;position:sticky;top:0;height:100vh;flex-shrink:0}
+aside b{display:block;margin:.5rem .5rem 2rem;font-size:1.25rem}
+aside b span{color:var(--cyan)}
+aside p{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin:0 .5rem .5rem;font-weight:700}
+.nav{padding:.85rem 1rem;border-radius:12px;background:var(--cyan);font-weight:600}
+main{flex:1;min-width:0;padding:2rem 2.5rem}
+h1,h2,.nav,.head,label{display:flex;align-items:center;gap:.6rem}
+h1{font-size:1.85rem;margin-bottom:.3rem}
+h1 svg{color:var(--cyan)}
+header{margin-bottom:2rem;color:var(--muted);font-size:.92rem}
+.stats,.nodes{display:grid;gap:1.25rem}
+.stats{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-bottom:2rem}
+.nodes{grid-template-columns:repeat(auto-fill,minmax(min(310px,100%),1fr));gap:1.5rem}
+.card,.stat,.node{background:#fff;border:1px solid var(--border);border-radius:20px}
+.card,.stat{box-shadow:0 10px 25px -5px rgba(15,23,42,.1);padding:1.75rem}
+.stat{padding:1.35rem 1.5rem}
+h2{font-size:1.2rem;margin-bottom:1.5rem}
+.head{justify-content:space-between;margin-bottom:.75rem;color:var(--muted);font-size:.85rem}
+.ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c)}
+.value{font-size:2.1rem;font-weight:800;line-height:1.1}
+.bar{height:8px;background:rgba(148,163,184,.2);border-radius:99px;overflow:hidden;margin-top:.35rem}
+.bar div{height:100%;background:var(--c);transition:width .5s}
 .node{padding:1.35rem;transition:.25s}
-.node:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--cyan)}
-.node-head{display:flex;align-items:center;justify-content:space-between}
-.node-head small{font-size:.78rem;color:var(--muted)}
-.badge{padding:.3rem .75rem;border-radius:999px;font-size:.75rem;font-weight:700;background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c)}
-.rows{display:flex;flex-direction:column;gap:.65rem;margin:1rem 0;font-size:.88rem}
-.row{display:flex;justify-content:space-between;padding:.45rem .75rem;background:rgba(148,163,184,.08);border-radius:8px}
-.row label{color:var(--muted);font-weight:500;display:flex;align-items:center;gap:.5rem}
-.node-foot{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);padding-top:.75rem;border-top:1px solid var(--border)}
-.modal{position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);z-index:2000;display:none;align-items:center;justify-content:center;padding:1rem}
-.modal.open{display:flex}
-.modal form{background:var(--card);border:1px solid var(--border);width:100%;max-width:580px;border-radius:var(--r);padding:2rem;max-height:90vh;overflow-y:auto}
-.modal-head{display:flex;justify-content:space-between;margin-bottom:1.5rem}
-.modal-head button{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.grid label{display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--muted)}
-.grid input,.grid select{padding:.75rem 1rem;border-radius:var(--r2);border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;outline:none}
-.modal-actions{display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.5rem}
-#toasts{position:fixed;bottom:2rem;right:2rem;z-index:3000;display:flex;flex-direction:column;gap:.75rem}
-.toast{background:#0f172a;color:#fff;padding:.9rem 1.4rem;border-radius:var(--r2);border-left:4px solid var(--cyan);font-size:.9rem;font-weight:500;animation:in .3s}
-@keyframes in{from{transform:translateX(100%)}}
-@media(max-width:1024px){.sidebar{width:80px;padding:1.25rem .5rem}.brand,.side-label,.nav-item span{display:none}.nav-item{justify-content:center}main{padding:1.5rem}}
+.node:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:.65rem;padding:.35rem .75rem;background:rgba(148,163,184,.1);border-radius:8px;font-size:.88rem}
+label{color:var(--muted);gap:.5rem}
+.row span:last-child{font-weight:700}
+input{width:84px;padding:.3rem .5rem;border-radius:8px;border:1px solid var(--border);background:none;font:inherit;text-align:right;outline:none}
+input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(6,182,212,.2)}
+input.invalid{border-color:var(--red)}
+@media(max-width:900px){aside{display:none}main{padding:1.25rem 1rem}h1{font-size:1.5rem}}
 </style>
 </head>
 <body>
-<aside class="sidebar">
-  <a href="index.html" class="brand">ROBO<span>CARE</span></a>
-  <div class="side-label">Télémétrie IoT</div>
-  <div class="nav-item"><i class="fas fa-tower-cell"></i><span>Télémétrie en direct</span></div>
+<aside>
+  <b>ROBO<span>CARE</span></b>
+  <p>Télémétrie IoT</p>
+  <div class="nav"><i data-i="radio"></i> Télémétrie en direct</div>
 </aside>
- 
 <main>
   <header>
-    <div>
-      <h1><i class="fas fa-satellite-dish" style="color:var(--cyan)"></i> Télémétrie en direct</h1>
-      <p>Flux continu de télémétrie des capteurs multi-zones</p>
-    </div>
-    <div class="actions">
-      <div class="live"><div class="dot"></div> EN DIRECT</div>
-      <button class="btn btn-icon" onclick="toggleTheme()" title="Basculer thème clair/sombre"><i class="fas fa-moon" id="themeIcon"></i></button>
-      <button class="btn" onclick="exportCSV()"><i class="fas fa-download"></i> Exporter les données</button>
-      <button class="btn btn-cyan" onclick="toggleModal(true)"><i class="fas fa-plus"></i> Connecter un nœud</button>
-    </div>
+    <h1><i data-i="radio"></i> Télémétrie en direct</h1>
+    Flux continu de télémétrie des capteurs multi-zones
   </header>
- 
   <div class="stats" id="stats"></div>
- 
   <section class="card">
-    <div class="card-head">
-      <h2><i class="fas fa-network-wired"></i> Réseau de nœuds capteurs</h2>
-      <span>Flux de données actualisé automatiquement toutes les 3 s</span>
-    </div>
+    <h2><i data-i="network"></i> Réseau de nœuds capteurs</h2>
     <div class="nodes" id="nodes"></div>
   </section>
 </main>
- 
-<div class="modal" id="modal">
-  <form onsubmit="saveNode(event)">
-    <div class="modal-head">
-      <h3><i class="fas fa-satellite-dish"></i> Connecter un nouveau nœud capteur IoT</h3>
-      <button type="button" onclick="toggleModal(false)">&times;</button>
-    </div>
-    <div class="grid">
-      <label>ID du nœud *<input id="nId" placeholder="ex. NODE-05" required></label>
-      <label>Zone / Emplacement *<input id="nLocation" placeholder="ex. Serre, section C" required></label>
-      <label>Type de capteur
-        <select><option>Humidité du sol et température (combiné)</option><option>Sonde d'humidité du sol (double profondeur)</option><option>Station microclimat</option></select>
-      </label>
-      <label>Protocole
-        <select><option>LoRaWAN longue portée</option><option>Wi-Fi (MQTT)</option><option>NB-IoT cellulaire</option></select>
-      </label>
-    </div>
-    <div class="modal-actions">
-      <button type="button" class="btn" onclick="toggleModal(false)">Annuler</button>
-      <button type="submit" class="btn btn-cyan">Connecter un nœud</button>
-    </div>
-  </form>
-</div>
- 
-<div id="toasts"></div>
- 
 <script>
-const KEY = "robocare_iot_nodes_v3";
-const DEFAULTS = [
-  { id: "NODE-01", name: "Champ nord, zone A", moisture: 42, temp: 27.5, humidity: 64, battery: 92, status: "Actif", rssi: "-68 dBm" },
-  { id: "NODE-02", name: "Serre B (riz)", moisture: 38, temp: 29.8, humidity: 71, battery: 85, status: "Actif", rssi: "-72 dBm" },
-  { id: "NODE-03", name: "Verger sud", moisture: 22, temp: 34.2, humidity: 45, battery: 78, status: "Alerte", rssi: "-81 dBm" }
+const P = {
+  radio: '<path d="M4.9 19.1a10 10 0 0 1 0-14.2M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M19.1 4.9a10 10 0 0 1 0 14.2"/><circle cx="12" cy="12" r="2"/>',
+  network: '<rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8"/>',
+  droplet: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+  temp: '<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>',
+  wind: '<path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>'
+};
+const ic = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${P[n]}</svg>`;
+document.querySelectorAll("[data-i]").forEach(e => e.outerHTML = ic(e.dataset.i));
+ 
+// k: clé · i/c: icône/couleur · l: libellé · u: unité · min/max: limites · s: titre de la carte stat · d: décimales · p: échelle de la barre
+const M = [
+  { k: "moisture", i: "droplet", c: "cyan", l: "Humidité du sol (10 cm)", u: "%", min: 0, max: 100, s: "Humidité du sol moy.", d: 0, p: 1 },
+  { k: "temp", i: "temp", c: "amber", l: "Température", u: " °C", min: -20, max: 60, s: "Température moyenne", d: 1, p: 1 / .45 },
+  { k: "humidity", i: "wind", c: "blue", l: "Humidité", u: "%", min: 0, max: 100, s: "Humidité moyenne", d: 0, p: 1 }
 ];
-let nodes = JSON.parse(localStorage.getItem(KEY)) || DEFAULTS;
- 
+const nodes = [
+  { name: "Passerelle 1", moisture: 42, temp: 27.5, humidity: 64 },
+  { name: "Passerelle 2", moisture: 38, temp: 29.8, humidity: 71 },
+  { name: "Passerelle 3", moisture: 22, temp: 34.2, humidity: 45 }
+];
 const $ = id => document.getElementById(id);
-const avg = (k, d = 0) => +(nodes.reduce((a, n) => a + n[k], 0) / nodes.length).toFixed(d);
-const clamp = (v, min, max) => Math.round(Math.min(max, Math.max(min, v)) * 10) / 10;
  
-function renderStats() {
-  const m = avg("moisture"), t = avg("temp", 1), h = avg("humidity");
-  const cards = [
-    ["Humidité du sol moy.", "droplet", "cyan", `${m}%`, m, "check-circle", "Optimale (35 % - 60 %)"],
-    ["Température moyenne", "temperature-half", "amber", `${t} °C`, t / 45 * 100, "sun", "Plage normale de la journée"],
-    ["Humidité moyenne", "wind", "blue", `${h}%`, h, "cloud", "Bonne humidité pour les cultures"],
-    ["Capteurs actifs", "tower-broadcast", "purple", `${nodes.length} / ${nodes.length}`, null, "wifi", "Tous les nœuds en ligne (100 %)"]
-  ];
-  $("stats").innerHTML = cards.map(([label, icon, c, val, pct, subIcon, sub]) => `
-    <div class="stat" style="--c:var(--${c})">
-      <div class="stat-head">${label}<div class="icon"><i class="fas fa-${icon}"></i></div></div>
-      <div class="value">${val}</div>
-      ${pct === null ? "" : `<div class="bar"><div style="width:${Math.min(100, pct)}%"></div></div>`}
-      <div class="sub"><i class="fas fa-${subIcon}"></i> ${sub}</div>
-    </div>`).join("");
-}
- 
-function renderNodes() {
-  $("nodes").innerHTML = nodes.map(n => `
-    <div class="node">
-      <div class="node-head">
-        <div><h3>${n.name}</h3><small>${n.id} • ${n.rssi}</small></div>
-        <span class="badge" style="--c:var(--${n.moisture < 25 ? "red" : "green"})">${n.status}</span>
-      </div>
-      <div class="rows">
-        <div class="row"><label><i class="fas fa-droplet" style="color:var(--cyan)"></i> Humidité du sol (10 cm)</label><strong>${n.moisture}%</strong></div>
-        <div class="row"><label><i class="fas fa-temperature-half" style="color:var(--amber)"></i> Température</label><strong>${n.temp} °C</strong></div>
-        <div class="row"><label><i class="fas fa-wind" style="color:var(--blue)"></i> Humidité</label><strong>${n.humidity}%</strong></div>
-      </div>
-      <div class="node-foot">
-        <span><i class="fas fa-battery-three-quarters"></i> Batterie : ${n.battery}%</span>
-        <span><i class="fas fa-clock"></i> Mis à jour à l'instant</span>
-      </div>
-    </div>`).join("");
-}
+$("nodes").innerHTML = nodes.map((n, i) => `
+  <div class="node"><h3>${n.name}</h3>${M.map(m => `
+    <div class="row"><label><span style="color:var(--${m.c});display:flex">${ic(m.i)}</span>${m.l}</label>
+    <span><input type="number" step=".1" min="${m.min}" max="${m.max}" data-i="${i}" data-k="${m.k}">${m.u}</span></div>`).join("")}
+  </div>`).join("");
  
 function refresh() {
-  localStorage.setItem(KEY, JSON.stringify(nodes));
-  renderStats();
-  renderNodes();
+  $("stats").innerHTML = M.map(m => {
+    const a = +(nodes.reduce((s, n) => s + n[m.k], 0) / nodes.length).toFixed(m.d);
+    return `<div class="stat" style="--c:var(--${m.c})">
+      <div class="head">${m.s}<div class="ico">${ic(m.i)}</div></div>
+      <div class="value">${a}${m.u}</div>
+      <div class="bar"><div style="width:${Math.min(100, Math.max(0, a * m.p))}%"></div></div></div>`;
+  }).join("");
+  document.querySelectorAll("#nodes input").forEach(x => x !== document.activeElement && (x.value = nodes[x.dataset.i][x.dataset.k]));
 }
  
-function pulse() {
-  nodes.forEach(n => {
-    n.moisture = clamp(n.moisture + (Math.random() - .48) * 1.2, 15, 95);
-    n.temp = clamp(n.temp + (Math.random() - .48) * .4, 10, 48);
-    n.humidity = clamp(n.humidity + (Math.random() - .48) * .8, 20, 95);
-  });
-  refresh();
-}
- 
-function toggleModal(open) { $("modal").classList.toggle("open", open); }
- 
-function saveNode(e) {
-  e.preventDefault();
-  nodes.unshift({ id: $("nId").value.trim(), name: $("nLocation").value.trim(), moisture: 45, temp: 26.5, humidity: 60, battery: 100, status: "Actif", rssi: "-60 dBm" });
-  refresh();
-  toggleModal(false);
-  toast("Nouveau nœud capteur IoT connecté avec succès !");
-}
- 
-function exportCSV() {
-  const rows = nodes.map(n => [n.id, n.name, n.moisture, n.temp, n.humidity, n.battery].map(v => `"${v}"`).join(","));
-  const csv = ["ID_Noeud,Emplacement,Humidite_Sol_10cm,Temp_C,Humidite_pct,Batterie_pct", ...rows].join("\n");
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
-  a.download = `telemetrie_capteurs_${new Date().toISOString().slice(0, 10)}.csv`;
-  a.click();
-  toast("Télémétrie des capteurs exportée en CSV.");
-}
- 
-function toggleTheme() {
-  const dark = document.body.dataset.theme !== "dark";
-  document.body.dataset.theme = dark ? "dark" : "light";
-  $("themeIcon").className = dark ? "fas fa-sun" : "fas fa-moon";
-}
- 
-function toast(msg) {
-  const el = Object.assign(document.createElement("div"), { className: "toast", textContent: msg });
-  $("toasts").append(el);
-  setTimeout(() => el.remove(), 3500);
-}
- 
+$("nodes").addEventListener("input", ({ target: x }) => {
+  const { i, k } = x.dataset, m = M.find(m => m.k === k), v = parseFloat(x.value), ok = v >= m.min && v <= m.max;
+  x.classList.toggle("invalid", !ok);
+  if (ok) { nodes[i][k] = v; refresh(); }
+});
+// À la sortie du champ : restaure la dernière valeur valide
+$("nodes").addEventListener("change", ({ target: x }) => {
+  x.classList.remove("invalid");
+  x.value = nodes[x.dataset.i][x.dataset.k];
+});
 refresh();
-setInterval(pulse, 3500);
 </script>
 </body>
 </html>
